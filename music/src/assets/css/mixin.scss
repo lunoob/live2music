@@ -1,0 +1,45 @@
+@import './variable';
+@mixin list-title {
+  height: 30px;
+  line-height: 30px;
+  padding-left: 20px;
+  font-size: $font-size-small;
+  color: $color-text-d;
+  background-color: $color-highlight-background;
+}
+
+// 背景图片
+@mixin bg-image($url) {
+  background-image: url($url+'@2x.png');
+  @media (-webkit-min-device-pixel-ratio: 3), (min-device-pixel-ratio: 3) {
+    background-image: url($url+'@3x.png');
+  }
+}
+
+@mixin showLine($line: 1) {
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: $line; // 显示2行
+  -webkit-box-orient: vertical;
+  word-break: break-all;
+}
+
+// 不换行, 以...显示
+@mixin no-wrap {
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+// 扩展点击区域
+@mixin extend-click {
+  position: relative;
+  &:before {
+    content: '';
+    position: absolute;
+    top: -10px;
+    left: -10px;
+    right: -10px;
+    bottom: -10px;
+  }
+}

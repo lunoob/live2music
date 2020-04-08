@@ -1,0 +1,59 @@
+<template>
+  <ul class="switches">
+    <li
+      class="switch-item"
+      v-for="(item, index) in switches"
+      :key="index"
+      :class="{ active: index === activeIndex }"
+      @click="switchItem(index)"
+    >
+      <span>{{ item.name }}</span>
+    </li>
+  </ul>
+</template>
+
+<script>
+export default {
+  name: 'switches',
+  props: {
+    switches: {
+      type: Array,
+      default: () => []
+    },
+    activeIndex: {
+      type: Number,
+      default: 0
+    }
+  },
+  methods: {
+    switchItem(index) {
+      this.$emit('switch', index);
+    }
+  }
+};
+</script>
+
+<style lang="scss" scoped>
+@import 'assets/css/variable';
+
+.switches {
+  display: flex;
+  align-items: center;
+  width: 240px;
+  margin: 0 auto;
+  border: 2px solid $color-switches-background;
+  border-radius: 5px;
+  .switch-item {
+    flex: 1;
+    padding: 8px;
+    text-align: center;
+    font-size: $font-size-medium;
+    color: $color-text-d;
+    background-color: $color-switches-background;
+    &.active {
+      background: $color-background;
+      color: $color-theme;
+    }
+  }
+}
+</style>
