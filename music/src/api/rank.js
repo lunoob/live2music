@@ -17,7 +17,8 @@ export function getToplist() {
       }
     })
     .catch(err => {
-      console.log(err);
+      // console.log(err);
+      return Promise.resolve('err');
     });
 }
 
@@ -41,6 +42,7 @@ export function getDetail(idx) {
       }
     })
     .catch(err => {
-      console.log(err);
+      // console.log(err);
+      return Promise.resolve('err');
     });
 }

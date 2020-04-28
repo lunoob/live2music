@@ -23,7 +23,8 @@ export function getMusicUrl(id) {
       }
     })
     .catch(err => {
-      console.log(err);
+      // console.log(err);
+      return Promise.resolve('err');
     });
 }
 
@@ -47,7 +48,8 @@ export function getMusicLyric(id) {
       }
     })
     .catch(err => {
-      console.log(err);
+      // console.log(err);
+      return Promise.resolve('err');
     });
 }
 
@@ -71,7 +73,8 @@ export function getMusicImage(ids) {
       }
     })
     .catch(err => {
-      console.log(err);
+      // console.log(err);
+      return Promise.resolve('err');
     });
 }
 
@@ -93,7 +96,7 @@ export function checkUse(id) {
       return Promise.resolve(res.data.message);
     })
     .catch(err => {
-      console.log(err.message);
+      // console.log(err.message);
       return Promise.resolve('该音乐不可用或无版权');
     });
 }

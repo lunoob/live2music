@@ -21,7 +21,8 @@ export function getRecommend() {
       }
     })
     .catch(err => {
-      console.log(err);
+      // console.log(err);
+      return Promise.resolve('err');
     });
 }
 
@@ -40,7 +41,8 @@ export function getDiscList() {
       }
     })
     .catch(err => {
-      console.log(err);
+      // console.log(err);
+      return Promise.resolve('err');
     });
 }
 
@@ -64,6 +66,7 @@ export function getDetail(id) {
       }
     })
     .catch(err => {
-      console.log(err);
+      // console.log(err);
+      return Promise.resolve('err');
     });
 }

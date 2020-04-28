@@ -17,7 +17,8 @@ export function hotSearch() {
       }
     })
     .catch(err => {
-      console.log(err);
+      // console.log(err);
+      return Promise.resolve('err');
     });
 }
 
@@ -43,6 +44,7 @@ export function keySearch(keyword, page = 1, num = 30) {
       }
     })
     .catch(err => {
-      console.log(err);
+      // console.log(err);
+      return Promise.resolve('err');
     });
 }

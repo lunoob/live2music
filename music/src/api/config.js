@@ -1,6 +1,3 @@
-// const baseUrl = 'http://localhost:4040';
-// const baseUrl = 'http://192.168.43.200:4040';
-const baseUrl = 'http://lurenji.xyz:4040';
 
 export const API = {
   RECOMMEND: {

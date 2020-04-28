@@ -339,6 +339,7 @@ export default {
       return `${minute.padStart(2, 0)}:${second.padStart(2, 0)}`;
     },
     ready(e) {
+      console.log(e.target, 'audio');
       this.duration = e.target.duration;
       this.songReady = true;
       if (!this.playing) {
@@ -472,6 +473,7 @@ export default {
           getMusicLyric(newSong.id),
           newSong.image ? null : getMusicImage(newSong.id)
         ]);
+
         if (res.length > 0) {
           // 修改当前歌曲信息
           this.setSongInfo({

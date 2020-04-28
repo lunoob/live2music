@@ -39,7 +39,8 @@ export function getSingerList() {
       return Promise.resolve(result);
     })
     .catch(err => {
-      console.log(err);
+      // console.log(err);
+      return Promise.resolve('err');
     });
 }
 
@@ -58,7 +59,8 @@ export function getHotSinger() {
       }
     })
     .catch(err => {
-      console.log(err);
+      // console.log(err);
+      return Promise.resolve('err');
     });
 }
 
@@ -82,6 +84,7 @@ export function getSongList(id) {
       }
     })
     .catch(err => {
-      console.log(err);
+      // console.log(err);
+      return Promise.resolve('err');
     });
 }

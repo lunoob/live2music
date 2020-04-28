@@ -76,7 +76,6 @@ export default {
       this._triggerPercent('move');
     },
     onProgressTouchEnd() {
-      console.log('touchend');
       if (!this.percent) {
         return this._offset(0);
       }
