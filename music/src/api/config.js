@@ -1,4 +1,6 @@
 
+const baseUrl = 'http://www.lurenji.xyz:4040'
+
 export const API = {
   RECOMMEND: {
     // 推荐轮播图

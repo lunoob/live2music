@@ -42,7 +42,7 @@ import { mapActions } from 'vuex';
 const SEARCH_NUM = 30;
 
 export default {
-  name: 'suggesti',
+  name: 'suggest',
   props: {
     query: {
       type: String,

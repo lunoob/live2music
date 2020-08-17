@@ -25,5 +25,8 @@ module.exports = {
       }
     }
   },
-  publicPath: './'
+  publicPath: './',
+  devServer: {
+    proxy: 'http://lurenji.xyz:4040'
+  }
 };

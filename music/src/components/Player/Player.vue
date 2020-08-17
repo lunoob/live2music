@@ -94,7 +94,7 @@
                 <i @click="prev" class="icon-prev"></i>
               </div>
               <div class="icon i-center" :class="disableCl">
-                <i :class="playAndPause" @click="togglePlaying"></i>
+                <i ref="playNpause" :class="playAndPause" @click="togglePlaying"></i>
               </div>
               <div class="icon i-right" :class="disableCl">
                 <!-- 下一曲 -->
@@ -150,10 +150,14 @@
       @timeupdate="updateTime"
       @ended="playEnd"
     ></audio>
+
+    <!-- 遮罩模仿按钮 -->
+    <mask-btn v-if="play_error" @play="togglePlaying" />
   </div>
 </template>
 
 <script>
+import MaskBtn from '../PlayBtn/PlayBtn';
 import ProgressBar from 'components/ProgressBar/ProgressBar';
 import ProgressCircle from 'components/ProgressCircle/ProgressCircle';
 import Scroll from 'components/Scroll/Scroll';
@@ -191,7 +195,9 @@ export default {
       currentShow: 'cd',
       playingLryic: '',
       // 缓冲
-      bufferPercent: 0
+      bufferPercent: 0,
+      // 播放错误
+      play_error: false
     };
   },
   computed: {
@@ -339,7 +345,6 @@ export default {
       return `${minute.padStart(2, 0)}:${second.padStart(2, 0)}`;
     },
     ready(e) {
-      console.log(e.target, 'audio');
       this.duration = e.target.duration;
       this.songReady = true;
       if (!this.playing) {
@@ -351,6 +356,11 @@ export default {
       this.songReady = true;
     },
     togglePlaying() {
+
+      if (this.play_error) {
+        this.play_error = false;
+      }
+
       if (!this.songReady) {
         return;
       }
@@ -571,7 +581,16 @@ export default {
     playing(newVal) {
       let audio = this.$refs.audio;
       this.$nextTick(() => {
-        newVal ? audio.play() : audio.pause();
+        console.log(newVal)
+        if (newVal) {
+          audio.play().catch(() => {
+            console.log('error');
+            this.togglePlaying(false);
+            this.play_error = true;
+          });
+        } else {
+          audio.pause();
+        }
       });
     }
   },
@@ -579,7 +598,8 @@ export default {
     ProgressBar,
     ProgressCircle,
     Scroll,
-    PlayList
+    PlayList,
+    MaskBtn
   }
 };
 </script>
